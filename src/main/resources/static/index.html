@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-ng-app="search">
+<head>
+    <meta charset="UTF-8">
+    <title>IMDB</title>
+    <script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.25/angular.js" data-semver="1.2.25"></script>
+    <script data-require="jquery@*" data-semver="2.1.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href='/style.css' rel='stylesheet' type='text/css'/>
+    <script src="/lib/app.js"></script>
+</head>
+<body data-ng-controller="searchController">
+
+<div class="row">
+    <div class="col-md-3">
+        <h3>Enter the name</h3>
+        <input type="text" class="form-control" style="width: 150px;" data-ng-model="searchTerm" /><br />
+        <button data-ng-click="getData()">Search</button>
+
+        <br>
+        <br>
+    </div>
+</div>
+
+<p style="color:red" data-ng-if="errorMessage ">Error message: {{errorMessage}}</p>
+
+<table border="1" width="100%" align="center" data-ng-if="search">
+    <tbody>
+    <tr align="center">
+        <td>Title</td>
+        <td>{{search.Title}}</td>
+    </tr>
+    <tr align="center">
+        <td>Year:</td>
+        <td>{{search.Year}}</td>
+    </tr>
+    <tr align="center">
+        <td>Rated</td>
+        <td>{{search.Rated}}</td>
+    </tr>
+    <tr align="center">
+        <td>Released</td>
+        <td>{{search.Released}}</td>
+    </tr>
+    <tr align="center">
+        <td>Runtime</td>
+        <td>{{search.Runtime}}</td>
+    </tr>
+    <tr align="center">
+        <td>Genre</td>
+        <td>{{search.Genre}}</td>
+    </tr>
+    <tr align="center">
+        <td>Director</td>
+        <td>{{search.Director}}</td>
+    </tr>
+    <tr align="center">
+        <td>Writer</td>
+        <td>{{search.Writer}}</td>
+    </tr>
+    <tr align="center">
+        <td>Actors</td>
+        <td>{{search.Actors}}</td>
+    </tr>
+    <tr align="center">
+        <td>Plot</td>
+        <td>{{search.Plot}}</td>
+    </tr>
+    <tr align="center">
+        <td>Language</td>
+        <td>{{search.Language}}</td>
+    </tr>
+    <tr align="center">
+        <td>Country</td>
+        <td>{{search.Country}}</td>
+    </tr>
+    <tr align="center">
+        <td>Awards</td>
+        <td>{{search.Awards}}</td>
+    </tr>
+    <tr align="center">
+        <td>Poster</td>
+        <td>{{search.Poster}}</td>
+    </tr>
+    <tr align="center">
+        <td>Metascore</td>
+        <td>{{search.Metascore}}</td>
+    </tr>
+    <tr align="center">
+        <td>Imabd Rating</td>
+        <td>{{search.imdbRating}}</td>
+    </tr>
+    <tr align="center">
+        <td>Imdb Votes</td>
+        <td>{{search.imdbVotes}}</td>
+    </tr>
+    <tr align="center">
+        <td>Imdb Id</td>
+        <td>{{search.imdbID}}</td>
+    </tr>
+    <tr align="center">
+        <td>Type</td>
+        <td>{{search.Type}}</td>
+    </tr>
+    <tr align="center">
+        <td>BoxOffice</td>
+        <td>{{search.BoxOffice}}</td>
+    </tr>
+    <tr align="center">
+        <td>Production</td>
+        <td>{{search.Production}}</td>
+    </tr>
+    <tr align="center">
+        <td>Website</td>
+        <td>{{search.Website}}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+<br>
+</body>
+</html>
