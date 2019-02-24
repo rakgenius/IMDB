@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ImdbController.class)
-class ImdbExceptionTest {
+public class ImdbExceptionTest {
     @Autowired
     MockMvc mockMvc;
 
@@ -40,7 +40,7 @@ class ImdbExceptionTest {
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult mvcResult = mockMvc.perform(requestBuilder)
-                .andExpect(status().isOk())
+                .andExpect(status().is4xxClientError())
                 .andReturn();
     }
 }

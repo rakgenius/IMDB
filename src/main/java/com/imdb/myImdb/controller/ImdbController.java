@@ -1,5 +1,6 @@
 package com.imdb.myImdb.controller;
 
+import com.imdb.myImdb.exception.ImdbException;
 import com.imdb.myImdb.model.Imdb;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,9 @@ import org.springframework.web.client.RestTemplate;
 public class ImdbController {
 
     private final String baseUrl =
-            "https://www.omdbapi.com/?plot=full&apikey=&t=";
-    @GetMapping("/movie/{searchTerm}")
-    public Imdb getMovie(@PathVariable("searchTerm")String searchterm) throws Exception {
+            "https://www.omdbapi.com/?plot=full&apikey=42dbf993&t=";
+    @GetMapping("/movie/{id}")
+    public Imdb getMovie(@PathVariable("id")String searchterm) {
         RestTemplate restTemplate = new RestTemplate();
         String url = baseUrl + searchterm;
 
@@ -28,10 +29,20 @@ public class ImdbController {
         );
 
         Imdb imdb = responseEntity.getBody();
-        if (imdb.getImdbID() == null)
-            throw new Exception("unable to find the movie");
+        log.info("status code is {}", responseEntity.getStatusCode());
+        log.info("imdb id is {}", imdb.getImdbID());
+
+        if (imdb.getImdbID() == null ||
+            imdb.getImdbID().equalsIgnoreCase("")) {
+            throw new ImdbException("unable to find the movie");
+        }
         log.info("Obtained info is {}", imdb);
         //return imdb;
         return responseEntity.getBody();
+    }
+
+    @GetMapping("/")
+    public String hello() {
+        return "Welcome to IMDB";
     }
 }
