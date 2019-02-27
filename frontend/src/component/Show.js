@@ -7,7 +7,8 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contact: {}
+      contact: {},
+      isLoading: false
     };
 
   }
@@ -61,6 +62,7 @@ class Show extends Component {
   }
 
   getData()  {
+    this.setState({isLoading: true});
     //const res = await axios.get('/imdb/movie/'+this.props.match.params.id);
     //const res = axios.get('/imdb/movie/'+this.props.match.params.id);
     //const { data } =  res.data;
@@ -69,7 +71,8 @@ class Show extends Component {
     console.log(this.props.match.params.id);
     axios.get('/imdb/movie/'+this.props.match.params.id)
           .then(res => {
-            this.setState({ contact: res.data });
+            this.setState({ contact: res.data,
+                            isLoading: false});
 
           })
           .catch((error) => {
@@ -86,8 +89,17 @@ class Show extends Component {
             console.log(error);
           });
   }
-  render() {
 
+  renderLoading() {
+    return (<div class="loader"></div>);
+  }
+
+  render() {
+    const isLoading = this.state.isLoading;
+
+    if (isLoading) {
+        return this.renderLoading();
+    } else {
     return (
       <div class="container">
         <div class="panel panel-default">
@@ -149,6 +161,7 @@ class Show extends Component {
         </div>
       </div>
     );
+    }
   }
 }
 
