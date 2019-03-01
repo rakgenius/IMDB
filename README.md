@@ -20,6 +20,12 @@ Steps to run the project
 1. Import the project into intellij or eclipse or maven project
 2. Install the necessary npm packages and build the front end project first.
 
+    npm config set prefix /usr/local
+
+    sudo npm install -g create-react-app
+
+    create-react-app frontend
+
     cd frontend
 
     npm install --save react-router-dom
