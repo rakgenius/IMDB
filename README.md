@@ -30,7 +30,7 @@ Steps to run the project
 
     npm install --save react-router-dom
 
-    npm install --save react-router-dom
+    npm install --save-dev bootstrap
 
     npm install --save axios
 
